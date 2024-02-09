@@ -1,3 +1,4 @@
+-- It's git! In vim!
 return {
     "tpope/vim-fugitive",
     lazy = true,
