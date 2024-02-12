@@ -7,12 +7,24 @@ return {
         keys = {
             {
                 "<leader>ff",
-                function() require("telescope.builtin").find_files() end,
+                function() 
+                    require("telescope.builtin").find_files({
+                        previewer = false,
+                        shorten_path = true,
+                        layout_strategy = "horizontal"
+                    }) 
+                end,
                 desc = "Find Files" 
             },
             {
                 "<leader>pf",
-                function() require("telescope.builtin").git_files() end,
+                function() 
+                    require("telescope.builtin").git_files({
+                        previewer = false,
+                        shorten_path = true,
+                        layout_strategy = "horizontal"
+                    }) 
+                end,
                 desc = "Find git Files" 
             },
             {
@@ -25,7 +37,7 @@ return {
                 function() require("telescope.builtin").grep_string({search = vim.fn.input("Grep > ")}) end,
                 desc = "Project Search" 
             },
-        }
+        },
     },
     -- add telescope-fzf-native so we can use the fzf fuzzy matching
     -- (EX, typing "model patient" should return "packs/.../model/whatever/patient.rb")

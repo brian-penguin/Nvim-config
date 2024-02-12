@@ -12,8 +12,8 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-require("brian-penguin.set")
 require("brian-penguin.remap")
+require("brian-penguin.set")
 
 -- Load the plugins from the plugin/ dir
 require("lazy").setup("brian-penguin.plugins")
