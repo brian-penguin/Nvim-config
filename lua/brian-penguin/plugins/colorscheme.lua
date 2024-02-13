@@ -1,5 +1,5 @@
 return { 
-    "brian-penguin/vim-colors-alabaster",
+    "p00f/alabaster.nvim",
     lazy = false,
     priority = 1000,
     config = function()
