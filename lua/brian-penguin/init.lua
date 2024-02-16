@@ -71,6 +71,16 @@ autocmd('LspAttach', {
     end
 })
 
+-- wrap and check for spell in text filetypes
+autocmd({"FileType"}, {
+  group = BrianPenguinGroup,
+  pattern = { "gitcommit", "markdown" },
+  callback = function()
+    vim.opt_local.wrap = true
+    vim.opt_local.spell = true
+  end,
+})
+
 vim.g.netrw_browse_split = 0
-vim.g.netrw_banner = 0
+vim.g.netrw_banner = 1
 vim.g.netrw_winsize = 25
