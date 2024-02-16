@@ -1,5 +1,9 @@
 vim.g.mapleader = " "
+-- Start Netrw with a spicy lil boy!
 vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
+
+vim.keymap.set("n", "<leader>bp", vim.cmd.bp)
+vim.keymap.set("n", "<leader>bn", vim.cmd.bn)
 
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
@@ -14,7 +18,7 @@ vim.keymap.set("n", "N", "Nzzzv")
 vim.keymap.set("x", "<leader>p", [["_dP]])
 
 -- next greatest remap ever : asbjornHaland
--- It yanks to the clipboard on the system! 
+-- It yanks to the clipboard on the system!
 vim.keymap.set({"n", "v"}, "<leader>y", [["+y]])
 vim.keymap.set("n", "<leader>Y", [["+Y]])
 
