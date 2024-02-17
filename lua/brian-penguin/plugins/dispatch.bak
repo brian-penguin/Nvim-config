@@ -1,0 +1,17 @@
+-- The goal is to use the vim dispatch and vim rspec instead of neotest
+-- for some reason neotest does not like onelife's setup for rspec
+-- AH for a second there it almost worked?!
+return {
+    "thoughtbot/vim-rspec",
+    dependencies = { "tpope/vim-dispatch" },
+    keys = {
+        { "<leader>mtv", "<cmd>call RunCurrentSpecFile()<CR>", desc = "run whole file" },
+        { "<leader>mts", "<cmd>call RunNearestSpec()<CR>", desc = "run nearest spec" },
+        { "<leader>mtr", "<cmd>call RunLasSpec()<CR>", desc = "run last run spec" },
+    },
+    config = function()
+        vim.g.rspec_command = "Dispatch bin/rspec {spec}"
+    end,
+
+}
+
