@@ -1,5 +1,5 @@
 return {
-    "p00f/alabaster.nvim",
+    "brian-penguin/alabaster.nvim",
     lazy = false,
     priority = 1000,
     config = function()
