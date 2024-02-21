@@ -39,6 +39,11 @@ return {
                 function() require("telescope.builtin").grep_string({ search = vim.fn.input("Grep > ") }) end,
                 desc = "SearchProject"
             },
+            {
+                "<leader>K",
+                function() require("telescope.builtin").grep_string() end,
+                desc = "SearchProject for word under cursor"
+            },
         },
     },
     -- add telescope-fzf-native so we can use the fzf fuzzy matching

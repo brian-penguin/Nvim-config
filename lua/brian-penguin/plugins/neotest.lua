@@ -10,9 +10,7 @@ return {
         status = { virtual_text = true },
         output = { open_on_run = true },
         quickfix = {
-            open = function()
-                require("trouble").open("quickfix")
-            end,
+            open = true
         },
         config = function()
             local neotest = require("neotest")
@@ -50,10 +48,6 @@ return {
 
             vim.keymap.set("n", "<leader>to", function()
                 neotest.output_panel.toggle()
-            end)
-
-            vim.keymap.set("n", "<leader>ts", function()
-                neotest.summary.toggle()
             end)
         end,
     },
