@@ -36,11 +36,11 @@ return {
             },
             {
                 "<leader>sp",
-                function() require("telescope.builtin").grep_string({ search = vim.fn.input("Grep > ") }) end,
+                function() require("telescope.builtin").live_grep() end,
                 desc = "SearchProject"
             },
             {
-                "<leader>K",
+                "<leader>sw",
                 function() require("telescope.builtin").grep_string() end,
                 desc = "SearchProject for word under cursor"
             },
