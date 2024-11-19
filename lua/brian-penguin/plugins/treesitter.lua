@@ -1,13 +1,13 @@
 return {
     "nvim-treesitter/nvim-treesitter",
+    dependencies = {
+        'andymass/vim-matchup'
+    },
     build = ":TSUpdate",
     config = function()
         require("nvim-treesitter.configs").setup({
             -- A list of parser names, or "all"
-            ensure_installed = {
-                "vimdoc", "javascript", "typescript", "c", "lua", "rust",
-                "jsdoc", "bash",
-            },
+            ensure_installed = "all",
 
             -- Install parsers synchronously (only applied to `ensure_installed`)
             sync_install = false,
@@ -17,7 +17,9 @@ return {
             auto_install = true,
 
             indent = {
-                enable = true
+                -- TODO -> This might be why ruby is super janky with indenting
+                --  - trying setting it to false from true
+                enable = false,
             },
 
             highlight = {
@@ -30,6 +32,11 @@ return {
                 -- Instead of true it can also be a list of languages
                 additional_vim_regex_highlighting = { "markdown" },
             },
+
+            -- Use the matchup plugin to get better '%' jumping (no more jumping to comments in ruby)
+            matchup = {
+                enable = true,
+            }
         })
 
         local treesitter_parser_config = require("nvim-treesitter.parsers").get_parser_configs()

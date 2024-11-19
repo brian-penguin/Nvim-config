@@ -5,7 +5,8 @@ return {
             "nvim-lua/plenary.nvim",
             "antoinemadec/FixCursorHold.nvim",
             "nvim-treesitter/nvim-treesitter",
-            "olimorris/neotest-rspec"
+            "olimorris/neotest-rspec",
+            "nvim-neotest/nvim-nio"
         },
         status = { virtual_text = true },
         output = { open_on_run = true },
