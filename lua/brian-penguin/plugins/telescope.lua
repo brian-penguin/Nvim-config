@@ -19,6 +19,16 @@ return {
                 desc = "Find Files"
             },
             {
+                "<leader>fb",
+                function()
+                    require("telescope.builtin").buffers({
+                        previewer = false,
+                        shorten_path = true,
+                        layout_strategy = "horizontal"
+                    })
+                end
+            },
+            {
                 "<leader>pf",
                 function()
                     require("telescope.builtin").git_files({

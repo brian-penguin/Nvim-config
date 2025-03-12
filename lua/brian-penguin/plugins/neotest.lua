@@ -8,17 +8,31 @@ return {
             "olimorris/neotest-rspec",
             "nvim-neotest/nvim-nio"
         },
-        status = { virtual_text = true },
-        output = { open_on_run = true },
-        quickfix = {
-            open = true
+        opts = {
+            status = { virtual_text = true },
+            output = { enabled = true, open_on_run = true },
+            quickfix = {
+                enabled = true,
+                open = function()
+                    vim.cmd("copen")
+                    --TODO: Not sure why trouble doesn't want to work here?
+                    --require("trouble").open({mode = "quickfix", focus= true})
+                end
+            },
         },
         config = function()
             local neotest = require("neotest")
             neotest.setup({
                 adapters = {
                     require("neotest-rspec")({
-                        rspec_cmd = "bin/rspec"
+                        rspec_cmd = function()
+                            return vim.tbl_flatten({
+                                "bundle",
+                                "exec",
+                                "rspec",
+                                "--no-color", --no-color to avoid ascii escape color chars
+                            })
+                        end
                     }),
                 }
             })
@@ -28,7 +42,8 @@ return {
                 virtual_text = {
                     format = function(diagnostic)
                         -- Replace newline and tab characters with space for more compact diagnostics
-                        local message = diagnostic.message:gsub("\n", " "):gsub("\t", " "):gsub("%s+", " "):gsub("^%s+", "")
+                        local message = diagnostic.message:gsub("\n", " "):gsub("\t", " "):gsub("%s+", " "):gsub("^%s+",
+                            "")
                         return message
                     end,
                 },
@@ -48,6 +63,10 @@ return {
             end)
 
             vim.keymap.set("n", "<leader>to", function()
+                neotest.output.open({ enter = false, quiet = true, auto_close = true })
+            end)
+
+            vim.keymap.set("n", "<leader>tO", function()
                 neotest.output_panel.toggle()
             end)
         end,
