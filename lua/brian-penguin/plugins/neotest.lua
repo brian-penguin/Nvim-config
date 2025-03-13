@@ -10,7 +10,7 @@ return {
         },
         opts = {
             status = { virtual_text = true },
-            output = { enabled = true, open_on_run = true },
+            output = { enabled = true, open_on_run = false },
             quickfix = {
                 enabled = true,
                 open = function()
@@ -34,7 +34,24 @@ return {
                             })
                         end
                     }),
-                }
+                },
+                icons = {
+                    child_indent = "│",
+                    child_prefix = "├",
+                    collapsed = "─",
+                    expanded = "╮",
+                    failed = "💩",
+                    final_child_indent = " ",
+                    final_child_prefix = "╰",
+                    non_collapsible = "─",
+                    notify = "",
+                    passed = "😁",
+                    running = "⏰",
+                    running_animated = { "/", "|", "\\", "-", "/", "|", "\\", "-" },
+                    skipped = "",
+                    unknown = "",
+                    watching = ""
+                },
             })
 
             local neotest_ns = vim.api.nvim_create_namespace("neotest")
@@ -52,12 +69,16 @@ return {
             neotest.summary = "botright vsplit | vertical resize 80"
 
             -- Key maps ----------------------------------------
+            -- TODO I want this to also support the desc, like we do in Telescope
+            --      - Do we need to write this differently?
             vim.keymap.set("n", "<leader>mts", function()
+                neotest.output_panel.clear()
                 neotest.run.run()
             end)
 
             -- TODO: should this also open the output panel or something?
             vim.keymap.set("n", "<leader>mtv", function()
+                neotest.output_panel.clear()
                 neotest.run.run(vim.fn.expand("%"))
                 neotest.run.attach()
             end)
