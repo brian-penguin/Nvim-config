@@ -7,7 +7,7 @@ return {
             "antoinemadec/FixCursorHold.nvim",
             "nvim-treesitter/nvim-treesitter",
             "olimorris/neotest-rspec",
-            "nvim-neotest/nvim-nio"
+            "nvim-neotest/nvim-nio",
         },
         opts = {
             status = { virtual_text = true },

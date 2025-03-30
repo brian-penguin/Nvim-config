@@ -30,3 +30,5 @@ vim.filetype.add({
     }
 })
 
+require("lspconfig").gleam.setup({})
+
