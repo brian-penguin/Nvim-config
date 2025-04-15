@@ -1,6 +1,7 @@
 return {
     {
         "nvim-neotest/neotest",
+        event = "LspAttach",
         dependencies = {
             "nvim-lua/plenary.nvim",
             "antoinemadec/FixCursorHold.nvim",
