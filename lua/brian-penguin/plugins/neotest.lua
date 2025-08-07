@@ -8,6 +8,7 @@ return {
             "nvim-treesitter/nvim-treesitter",
             "olimorris/neotest-rspec",
             "nvim-neotest/nvim-nio",
+            "jutonz/neotest-bun"
         },
         opts = {
             status = { virtual_text = true },
