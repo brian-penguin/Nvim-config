@@ -26,6 +26,7 @@ return {
             local neotest = require("neotest")
             neotest.setup({
                 adapters = {
+                    require("neotest-bun"),
                     require("neotest-rspec")({
                         rspec_cmd = function()
                             return vim.tbl_flatten({
