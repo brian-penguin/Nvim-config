@@ -1,10 +1,10 @@
 return {
-    "brian-penguin/alabaster.nvim",
-    lazy = false,
-    priority = 1000,
-    config = function()
-        vim.cmd("colorscheme alabaster")
-    end
+  "brian-penguin/alabaster.nvim",
+  lazy = false,
+  priority = 1000,
+  config = function()
+    vim.cmd("colorscheme alabaster")
+  end
 }
 --return {
 --    "rose-pine/neovim",

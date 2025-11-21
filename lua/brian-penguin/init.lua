@@ -21,14 +21,8 @@ require("lazy").setup("brian-penguin.plugins")
 require("brian-penguin.autocmd")
 
 function R(name)
-    require("plenary.reload").reload_module(name)
+  require("plenary.reload").reload_module(name)
 end
 
-vim.filetype.add({
-    extension = {
-        templ = "templ",
-    }
-})
-
-require("lspconfig").gleam.setup({})
-
+vim.lsp.enable('gleam')
+-- vim.lsp.config.gleam.setup({})
