@@ -1,3 +1,4 @@
+-- See: https://www.lazyvim.org/extras/test/core
 return {
   {
     "nvim-neotest/neotest",
@@ -24,17 +25,25 @@ return {
       },
     },
     config = function()
+      local required_parsers = { "ruby", "gleam", "typescript" }
+      for _, parser in ipairs(required_parsers) do
+        if not pcall(vim.treesitter.language.inspect, parser) then
+          vim.notify("Neotest: treesitter parser '" .. parser .. "' not installed. Run :TSInstall " .. parser,
+            vim.log.levels.WARN)
+        end
+      end
+
       local neotest = require("neotest")
       neotest.setup({
         adapters = {
           require("neotest-rspec")({
             rspec_cmd = function()
-              return vim.tbl_flatten({
+              return {
                 "bundle",
                 "exec",
                 "rspec",
                 "--no-color",                 --no-color to avoid ascii escape color chars
-              })
+              }
             end
           }),
         },
@@ -69,7 +78,7 @@ return {
         },
       }, neotest_ns)
 
-      neotest.summary = "botright vsplit | vertical resize 80"
+      neotest.summary = "botright vsplit | vertical resize 90"
 
       -- Key maps ----------------------------------------
       -- TODO I want this to also support the desc, like we do in Telescope
